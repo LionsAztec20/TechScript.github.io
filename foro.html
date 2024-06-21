@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Foro de Videojuegos</title>
+  <link rel="stylesheet" href="foro.css" />
+</head>
+<body>
+  <header>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="noticias.html">Noticias</a></li>
+        <li><a href="foro.html">Foro</a></li>
+        <li><a href="ayuda.html">Ayuda</a></li>
+      </ul>
+
+      <div class="menu">
+        <input id="check" type="checkbox" />
+        <label for="check" class="menuButton">
+          <span class="top"></span>
+          <span class="mid"></span>
+          <span class="bot"></span>
+        </label>
+        <div class="dropdown-content">
+          <ul>
+            <li><a href="registro.html" id="loginLink">Iniciar sesión</a></li>
+            <li><a href="#" style="display: none" id="logoutLink">Cerrar sesión</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="cont">
+    <a href="foro.html" class="titulo">Foro</a>
+    <div class="menu-background"></div>
+  </div>
+
+  <main>
+    <section id="forum">
+      <h2>Temas de discusión</h2>
+      <ul id="topics-list">
+        <li>
+          <strong>
+            <h4>La Evolución de los Videojuegos</h4>
+            <p>
+              "Desde los clásicos arcade hasta los juegos de realidad virtual,
+              la industria de los videojuegos ha evolucionado de manera
+              impresionante. Este tema explora los hitos y avances
+              tecnológicos que han marcado la historia de los videojuegos."
+            </p>
+          </strong>
+        </li>
+        <li>
+          <strong>
+            <h4>Los Mejores Juegos del Año</h4>
+            <p>
+              "Cada año, la industria del videojuego nos sorprende con
+              lanzamientos increíbles. En este tema, discutimos los juegos que
+              se han destacado este año, analizando sus gráficos, jugabilidad
+              y narrativa."
+            </p>
+          </strong>
+        </li>
+        <li>
+          <strong>
+            <h4>Impacto de los Videojuegos en la Cultura Pop</h4>
+            <p>
+              "Los videojuegos han influido enormemente en la cultura popular.
+              Desde películas y series basadas en videojuegos hasta personajes
+              icónicos que trascienden generaciones, este tema analiza cómo
+              los videojuegos han moldeado la cultura pop."
+            </p>
+          </strong>
+        </li>
+      </ul>
+    </section>
+    <section id="new-topic">
+      <h2>Nuevo Tema</h2>
+      <form id="new-topic-form">
+        <label for="title">Título:</label>
+        <input type="text" id="title" name="title" pattern=".{10,20}" required title="Entre 10 y 20 caracteres alfanuméricos sin repetir más de 3 veces consecutivas." />
+        <label for="description">Descripción:</label>
+        <textarea id="description" name="description" minlength="1" maxlength="1000" pattern="(?!(.)\1{2}).*" required></textarea>
+        <button type="submit">Agregar Tema</button>
+      </form>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2024 Foro de Videojuegos</p>
+  </footer>
+  <script src="foro.js"></script>
+</body>
+</html>

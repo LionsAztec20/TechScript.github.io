@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuario</title>
+    <link rel="stylesheet" href="registro.css">
+</head>
+<body>
+    <form class="form" id="registrationForm">
+        <p class="title">Registro</p>
+        <p class="message">Inicia ahora.</p>
+        <div class="flex">
+            <label>
+                <input class="input" type="text" placeholder="" required="" id="nombre" />
+                <span>Nombre</span>
+            </label>
+
+            <label>
+                <input class="input" type="text" placeholder="" required="" id="apellido" />
+                <span>Apellido</span>
+            </label>
+        </div>
+
+        <label>
+            <input class="input" type="email" placeholder="" required="" id="correo" />
+            <span>Correo</span>
+        </label>
+
+        <label>
+            <input class="input" type="password" placeholder="" required="" id="contrasena" />
+            <span>Contraseña</span>
+        </label>
+
+        <button class="submit" id="submitButton">Iniciar</button>
+    </form>
+
+    <script>
+        const submitButton = document.getElementById("submitButton");
+        const registrationForm = document.getElementById("registrationForm");
+        let formSubmitted = false;
+
+        registrationForm.addEventListener("submit", function(event) {
+            event.preventDefault();  // Prevenir el envío del formulario
+
+            const nombre = document.getElementById("nombre").value;
+            const apellido = document.getElementById("apellido").value;
+            const correo = document.getElementById("correo").value;
+            const contrasena = document.getElementById("contrasena").value;
+            let isValid = true;
+            let errorMessage = '';
+
+            // Validación de nombre
+            const nombrePattern = /^[A-Za-z]{5,10}$/;
+            if (!nombrePattern.test(nombre)) {
+                isValid = false;
+                errorMessage += "El nombre debe contener solo letras y tener entre 5 y 10 caracteres.\n";
+            }
+
+            // Validación de apellido
+            const apellidoPattern = /^[A-Za-z]{5,20}$/;
+            if (!apellidoPattern.test(apellido)) {
+                isValid = false;
+                errorMessage += "El apellido debe contener solo letras y tener entre 5 y 20 caracteres.\n";
+            }
+
+            // Validación de correo
+            const correoPattern = /^[A-Za-z0-9]{10,50}@[A-Za-z]{1,10}\.com$/;
+            if (!correoPattern.test(correo)) {
+                isValid = false;
+                errorMessage += "El correo debe tener entre 10 y 50 caracteres antes del @, permitir letras y números, seguido de 1 a 10 caracteres después del @ y terminar con .com.\n";
+            }
+
+            // Validación de contraseña
+            const contrasenaPattern = /^[A-Za-z0-9!@#$%^&*()_+=-]{6,16}$/;
+            if (!contrasenaPattern.test(contrasena)) {
+                isValid = false;
+                errorMessage += "La contraseña debe tener entre 6 y 16 caracteres, permitiendo letras, números y símbolos.\n";
+            }
+
+            if (isValid) {
+                formSubmitted = true;
+                window.location.href = "index.html";
+            } else {
+                alert(errorMessage);
+            }
+        });
+
+        window.addEventListener("beforeunload", function(event) {
+            if (!formSubmitted) {
+                event.preventDefault();
+                event.returnValue = '';  // Required for Chrome
+                return '';  // Required for Firefox
+            }
+        });
+    </script>
+</body>
+</html>
